@@ -1,11 +1,14 @@
 # Documentation Index
 
+**Language:** [English](../README.md) | [Français](../README.fr.md) | [Español](../README.es.md)
+
 ## Language
 
 | Language | Open |
 | --- | --- |
 | English | [This index](./README.md) |
 | Français | [French index](./README.fr.md) |
+| Español | [Spanish index](./README.es.md) |
 
 - [Installation](./INSTALLATION.md)
 - [Usage](./USAGE.md)

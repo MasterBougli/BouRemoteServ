@@ -1,5 +1,7 @@
 # BouRemoteServ
 
+**Langue :** [English](README.md) | [Français](README.fr.md) | [Español](README.es.md)
+
 BouRemoteServ est une application Windows discrète dans la zone de notification qui expose une interface web locale pour contrôler ton PC depuis le téléphone, sans rien installer sur le téléphone.
 
 ## Ce que fait le projet
@@ -86,6 +88,7 @@ Choisis la version que tu veux lire :
 | --- | --- |
 | English | [Ouvrir les docs EN](docs/README.md) |
 | Francais | [Ouvrir les docs FR](docs/README.fr.md) |
+| Español | [Ouvrir les docs ES](docs/README.es.md) |
 
 ## Suite possible
 

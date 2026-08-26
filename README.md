@@ -1,5 +1,7 @@
 # BouRemoteServ
 
+**Language:** [English](README.md) | [Français](README.fr.md) | [Español](README.es.md)
+
 BouRemoteServ is a Windows tray app that exposes a local web interface so your phone can control your PC without installing anything on the phone.
 
 ## What it does
@@ -86,6 +88,7 @@ Pick the version you want to read:
 | --- | --- |
 | English | [Open EN docs](docs/README.md) |
 | Français | [Ouvrir les docs FR](docs/README.fr.md) |
+| Español | [Abrir docs ES](docs/README.es.md) |
 
 ### French docs
 
