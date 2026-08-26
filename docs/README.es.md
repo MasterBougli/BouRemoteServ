@@ -24,10 +24,15 @@
 
 ## Español
 
-Las traducciones completas al español de las guías siguen en progreso.
-- [Instalación (EN)](./INSTALLATION.md)
-- [Uso (EN)](./USAGE.md)
-- [Arquitectura (EN)](./ARCHITECTURE.md)
+- [Instalación ES](./INSTALLATION.es.md)
+- [Uso ES](./USAGE.es.md)
+- [Índice ES](./README.es.md)
+
+## Otras guías
+
+- [Installation (EN)](./INSTALLATION.md)
+- [Usage (EN)](./USAGE.md)
+- [Architecture (EN)](./ARCHITECTURE.md)
 - [Build Windows (EN)](./BUILD_WINDOWS.md)
-- [Solución de problemas (EN)](./TROUBLESHOOTING.md)
+- [Troubleshooting (EN)](./TROUBLESHOOTING.md)
 - [Índice FR](./README.fr.md)

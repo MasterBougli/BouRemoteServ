@@ -2,13 +2,13 @@
 
 ## Start the app
 
-Launch BouRemoteServ from Windows. It runs quietly in the tray and starts a local web server.
+Launch BouRemoteServ from Windows. It stays discreet in the tray and opens a local web dashboard for the phone.
 
 ## Connect from the phone
 
 You have two options:
 
-- Scan the QR code shown in the web dashboard
+- Scan the QR code shown in the dashboard
 - Type the local address manually into the phone browser
 
 ## Control the PC
@@ -17,6 +17,12 @@ You have two options:
 - Tap the trackpad for a left click
 - Use the directional pad for precise nudges
 - Use the media buttons for `Play / Pause`, `Next`, and `Previous`
+
+## Best practices
+
+- Keep the phone and PC on the same local network
+- Use the QR code first if the address is long
+- Leave the tray app open so the session stays available
 
 ## Language
 

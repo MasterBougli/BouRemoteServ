@@ -31,3 +31,9 @@
 - [Build Windows FR](./BUILD_WINDOWS.fr.md)
 - [Depannage FR](./TROUBLESHOOTING.fr.md)
 - [Index FR](./README.fr.md)
+
+## Spanish
+
+- [Installation ES](./INSTALLATION.es.md)
+- [Usage ES](./USAGE.es.md)
+- [Index ES](./README.es.md)

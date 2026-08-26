@@ -2,7 +2,7 @@
 
 ## Démarrer l'application
 
-Lance BouRemoteServ sur Windows. L'application reste discrète dans la zone de notification et démarre un serveur web local.
+Lance BouRemoteServ sur Windows. L'application reste discrète dans la zone de notification et ouvre un tableau de bord web local pour le téléphone.
 
 ## Se connecter depuis le téléphone
 
@@ -18,6 +18,12 @@ Tu as deux options :
 - Utilise le pavé directionnel pour les petits réglages
 - Utilise les boutons media pour `Play / Pause`, `Next` et `Previous`
 
+## Bons réflexes
+
+- Garde le téléphone et le PC sur le même réseau local
+- Utilise d'abord le QR code si l'adresse est longue
+- Laisse l'application de la zone de notification ouverte pour conserver l'accès
+
 ## Langue
 
 Tu peux passer du francais à l'anglais depuis le sélecteur de langue.
@@ -25,4 +31,3 @@ Tu peux passer du francais à l'anglais depuis le sélecteur de langue.
 ## Démarrage automatique
 
 Active ou désactive le démarrage avec Windows depuis le panneau de réglages ou depuis le menu de la zone de notification.
-
