@@ -9,6 +9,7 @@
   <body>
     <div class="backdrop"></div>
     <main class="shell">
+      <!-- En-tête principal avec la marque et les points forts du projet -->
       <header class="appbar card">
         <div class="brand">
           <span class="brand__mark" aria-hidden="true"></span>
@@ -24,6 +25,7 @@
         </div>
       </header>
 
+      <!-- Zone d'accueil avec l'état, l'adresse locale et les stats rapides -->
       <section class="hero card">
         <div class="hero__copy">
           <p class="eyebrow" data-i18n="heroEyebrow">Windows local remote</p>
@@ -61,8 +63,10 @@
         </div>
       </section>
 
+      <!-- Grille principale des contrôles du téléphone -->
       <section class="layout">
         <section class="left column">
+          <!-- Contrôle souris : trackpad et clics rapides -->
           <article class="card panel">
             <div class="panel__header">
               <div>
@@ -81,6 +85,7 @@
             </div>
           </article>
 
+          <!-- Contrôle précis avec le pavé directionnel -->
           <article class="card panel">
             <div class="panel__header">
               <div>
@@ -102,6 +107,7 @@
         </section>
 
         <section class="right column">
+          <!-- Commandes media pour la lecture -->
           <article class="card panel">
             <div class="panel__header">
               <div>
@@ -117,6 +123,7 @@
             </div>
           </article>
 
+          <!-- Connexion locale via QR code ou adresse manuelle -->
           <article class="card panel">
             <div class="panel__header">
               <div>
@@ -140,6 +147,7 @@
             </div>
           </article>
 
+          <!-- Réglages globaux de l'application -->
           <article class="card panel">
             <div class="panel__header">
               <div>
@@ -169,6 +177,7 @@
       </section>
     </main>
 
+    <!-- Script principal de l'interface web -->
     <script src="/app.js"></script>
   </body>
 </html>

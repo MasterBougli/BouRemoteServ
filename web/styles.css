@@ -1,3 +1,4 @@
+/* Palette globale et mesures de base */
 :root {
   color-scheme: dark;
   --bg: #060b14;
@@ -25,6 +26,7 @@
   box-sizing: border-box;
 }
 
+/* Fond général et typographie de l'interface */
 html, body {
   margin: 0;
   min-height: 100%;
@@ -42,6 +44,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Trame légère pour donner de la profondeur au fond */
 body::before {
   content: "";
   position: fixed;
@@ -66,6 +69,7 @@ button {
   cursor: pointer;
 }
 
+/* Halo d'ambiance derrière les cartes */
 .backdrop {
   position: fixed;
   inset: 0;
@@ -78,12 +82,14 @@ button {
   opacity: 0.9;
 }
 
+/* Conteneur principal centré */
 .shell {
   width: min(1180px, calc(100vw - 20px));
   margin: 0 auto;
   padding: 16px 0 28px;
 }
 
+/* Style commun des panneaux et des cartes */
 .card {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 18%),
@@ -94,10 +100,12 @@ button {
   backdrop-filter: blur(20px);
 }
 
+/* Accent discret au survol */
 .card:hover {
   border-color: var(--card-border-strong);
 }
 
+/* Barre de marque en haut de la page */
 .appbar {
   display: flex;
   align-items: center;
@@ -108,6 +116,7 @@ button {
   animation: rise 500ms ease both;
 }
 
+/* Bloc logo + nom du projet */
 .brand {
   display: flex;
   align-items: center;
@@ -115,6 +124,7 @@ button {
   min-width: 0;
 }
 
+/* Petit repère visuel de la marque */
 .brand__mark {
   width: 18px;
   height: 18px;
@@ -128,6 +138,7 @@ button {
   flex: 0 0 auto;
 }
 
+/* Nom du produit en capitales */
 .brand__title {
   display: block;
   font-size: 1.05rem;
@@ -135,6 +146,7 @@ button {
   text-transform: uppercase;
 }
 
+/* Badges de positionnement du projet */
 .appbar__chips {
   display: flex;
   flex-wrap: wrap;
@@ -142,6 +154,7 @@ button {
   gap: 10px;
 }
 
+/* Badge individuel */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -156,6 +169,7 @@ button {
   letter-spacing: 0.01em;
 }
 
+/* Zone d'introduction et d'état principal */
 .hero {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -165,6 +179,7 @@ button {
   animation: rise 650ms ease both;
 }
 
+/* Libellé de contexte en haut des blocs */
 .eyebrow {
   margin: 0 0 8px;
   font-size: 0.78rem;
@@ -173,6 +188,7 @@ button {
   color: var(--accent-2);
 }
 
+/* Titres principaux des cartes */
 .hero h1,
 .panel h2 {
   margin: 0;
@@ -180,10 +196,12 @@ button {
   letter-spacing: -0.04em;
 }
 
+/* Titre de marque plus imposant */
 .hero h1 {
   font-size: clamp(2.3rem, 5vw, 4.6rem);
 }
 
+/* Phrase de présentation sous le titre */
 .hero__text {
   margin: 14px 0 0;
   max-width: 54ch;
@@ -192,6 +210,7 @@ button {
   line-height: 1.6;
 }
 
+/* Trois cartes de synthèse dans le hero */
 .hero__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -199,6 +218,7 @@ button {
   margin-top: 20px;
 }
 
+/* Carte de synthèse rapide */
 .stat-card {
   padding: 14px 16px;
   border-radius: 18px;
@@ -208,6 +228,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Libellé discret de la carte de synthèse */
 .stat-card span {
   display: block;
   color: var(--soft);
@@ -217,6 +238,7 @@ button {
   margin-bottom: 8px;
 }
 
+/* Valeur mise en avant dans la carte de synthèse */
 .stat-card strong {
   display: block;
   font-size: 0.98rem;
@@ -224,6 +246,7 @@ button {
   color: var(--primary-strong);
 }
 
+/* Colonne d'état à droite du hero */
 .hero__status {
   display: flex;
   flex-direction: column;
@@ -232,6 +255,7 @@ button {
   padding: 2px;
 }
 
+/* Badge d'état principal */
 .status-pill {
   display: inline-flex;
   align-items: center;
@@ -246,6 +270,7 @@ button {
   letter-spacing: 0.01em;
 }
 
+/* Point lumineux qui accompagne l'état */
 .status-pill::before {
   content: "";
   width: 10px;
@@ -255,22 +280,26 @@ button {
   box-shadow: 0 0 20px rgba(78, 224, 143, 0.65);
 }
 
+/* Variante visuelle quand la connexion est perdue */
 .status-pill[data-state="offline"] {
   background: rgba(255, 118, 147, 0.12);
   border-color: rgba(255, 118, 147, 0.3);
   color: #ffe0e8;
 }
 
+/* Point lumineux pour l'état hors ligne */
 .status-pill[data-state="offline"]::before {
   background: var(--accent);
   box-shadow: 0 0 20px rgba(255, 118, 147, 0.62);
 }
 
+/* Empilement des informations de connexion */
 .status-stack {
   display: grid;
   gap: 12px;
 }
 
+/* Carte de détail pour l'adresse et la dernière action */
 .status-item {
   padding: 16px 18px;
   border-radius: var(--radius-md);
@@ -280,6 +309,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Petit titre de la carte */
 .status-item span {
   display: block;
   color: var(--soft);
@@ -287,26 +317,31 @@ button {
   margin-bottom: 6px;
 }
 
+/* Valeur principale de la carte */
 .status-item strong {
   font-size: 1rem;
   word-break: break-word;
 }
 
+/* Grille principale à deux colonnes */
 .layout {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
   gap: 18px;
 }
 
+/* Colonne verticale de panneaux */
 .column {
   display: grid;
   gap: 18px;
 }
 
+/* Panneaux internes de contrôle */
 .panel {
   padding: 20px;
 }
 
+/* Ligne de titre et d'aide en haut de chaque panneau */
 .panel__header {
   display: flex;
   align-items: flex-start;
@@ -315,6 +350,7 @@ button {
   margin-bottom: 16px;
 }
 
+/* Texte d'aide à droite du titre */
 .panel__hint {
   margin: 0;
   max-width: 28ch;
@@ -323,6 +359,7 @@ button {
   line-height: 1.5;
 }
 
+/* Grande zone tactile pour déplacer la souris */
 .trackpad {
   position: relative;
   min-height: 360px;
@@ -336,6 +373,7 @@ button {
   user-select: none;
 }
 
+/* Lueur intérieure pour donner du relief au pavé tactile */
 .trackpad__glow {
   position: absolute;
   inset: 0;
@@ -346,6 +384,7 @@ button {
   opacity: 0.8;
 }
 
+/* Etiquette flottante dans le trackpad */
 .trackpad__label {
   position: absolute;
   left: 24px;
@@ -358,6 +397,7 @@ button {
   font-weight: 600;
 }
 
+/* Rangée des boutons de clic */
 .click-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -365,6 +405,7 @@ button {
   margin-top: 14px;
 }
 
+/* Base commune des boutons */
 .ghost-button,
 .media-button,
 .mini-button,
@@ -379,6 +420,7 @@ button {
     color 180ms ease;
 }
 
+/* Boutons secondaires plus discrets */
 .ghost-button,
 .mini-button {
   background: rgba(255, 255, 255, 0.055);
@@ -386,6 +428,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Effet léger de soulèvement au survol */
 .ghost-button:hover,
 .mini-button:hover,
 .media-button:hover,
@@ -393,6 +436,7 @@ button {
   transform: translateY(-1px);
 }
 
+/* Retour au sol à l'appui */
 .ghost-button:active,
 .mini-button:active,
 .media-button:active,
@@ -400,12 +444,14 @@ button {
   transform: translateY(0) scale(0.99);
 }
 
+/* Pavé directionnel centré */
 .dpad {
   display: grid;
   justify-items: center;
   gap: 12px;
 }
 
+/* Ligne centrale du pavé directionnel */
 .dpad__row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -413,6 +459,7 @@ button {
   width: 100%;
 }
 
+/* Boutons de déplacement directionnel */
 .dpad__btn {
   width: 100%;
   max-width: 160px;
@@ -425,16 +472,19 @@ button {
     0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
+/* Bouton central plus accentué */
 .dpad__btn--center {
   color: var(--accent-2);
 }
 
+/* Grille des commandes media */
 .media-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
+/* Boutons media standards */
 .media-button {
   background: rgba(255, 255, 255, 0.055);
   color: var(--text);
@@ -442,6 +492,7 @@ button {
   font-weight: 600;
 }
 
+/* Bouton media principal mis en avant */
 .media-button--primary {
   background: linear-gradient(135deg, rgba(122, 169, 255, 0.96), rgba(134, 224, 255, 0.85));
   color: #06101f;
@@ -449,6 +500,7 @@ button {
   box-shadow: 0 16px 36px rgba(122, 169, 255, 0.28);
 }
 
+/* Mise en page du bloc de connexion */
 .connect-grid {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -456,6 +508,7 @@ button {
   align-items: center;
 }
 
+/* Carte visuelle du QR code */
 .qr-card {
   display: grid;
   place-items: center;
@@ -467,16 +520,19 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
+/* Image QR code qui remplit la carte */
 .qr-card img {
   width: 100%;
   border-radius: 16px;
 }
 
+/* Colonne texte et adresse manuelle */
 .connect-copy {
   display: grid;
   gap: 10px;
 }
 
+/* Texte secondaire et aides */
 .connect-copy label,
 .setting-field span,
 .switch__text,
@@ -484,12 +540,14 @@ button {
   color: var(--muted);
 }
 
+/* Ligne input + bouton copier */
 .copy-row {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 10px;
 }
 
+/* Champs de saisie et liste déroulante */
 .copy-row input,
 .setting-field select {
   min-height: 52px;
@@ -501,28 +559,33 @@ button {
   outline: none;
 }
 
+/* Focus visible sur les champs */
 .copy-row input:focus,
 .setting-field select:focus {
   border-color: rgba(122, 169, 255, 0.45);
   box-shadow: 0 0 0 4px rgba(122, 169, 255, 0.14);
 }
 
+/* Note de contexte sous les champs */
 .note {
   margin: 0;
   font-size: 0.92rem;
 }
 
+/* Grille des réglages globaux */
 .settings-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
+/* Groupe d'un réglage */
 .setting-field {
   display: grid;
   gap: 10px;
 }
 
+/* Interrupteur au format mobile */
 .switch {
   display: flex;
   align-items: center;
@@ -530,12 +593,14 @@ button {
   user-select: none;
 }
 
+/* Input caché derrière le switch */
 .switch input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
+/* Rail du switch */
 .switch__track {
   width: 58px;
   height: 34px;
@@ -547,6 +612,7 @@ button {
   align-items: center;
 }
 
+/* Pastille mobile du switch */
 .switch__thumb {
   width: 26px;
   height: 26px;
@@ -556,20 +622,24 @@ button {
   transition: transform 180ms ease, background 180ms ease;
 }
 
+/* Etat activé du switch */
 .switch input:checked + .switch__track {
   background: rgba(112, 165, 255, 0.24);
   border-color: rgba(112, 165, 255, 0.35);
 }
 
+/* Pastille quand le switch est activé */
 .switch input:checked + .switch__track .switch__thumb {
   transform: translateX(24px);
   background: linear-gradient(180deg, #b6ceff, #70a5ff);
 }
 
+/* Texte du switch */
 .switch__text {
   font-weight: 600;
 }
 
+/* Animation d'apparition douce */
 @keyframes rise {
   from {
     opacity: 0;
@@ -581,6 +651,7 @@ button {
   }
 }
 
+/* Ajustements tablette */
 @media (max-width: 980px) {
   .appbar,
   .hero,
@@ -608,6 +679,7 @@ button {
   }
 }
 
+/* Ajustements mobile */
 @media (max-width: 640px) {
   .shell {
     width: min(100vw - 16px, 1180px);
