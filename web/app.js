@@ -1,8 +1,19 @@
 const text = {
   fr: {
+    appbarEyebrow: "Console locale premium",
+    brandTitle: "BouRemoteServ",
+    chipLocalOnly: "Réseau local uniquement",
+    chipNoInstall: "Sans installation sur le téléphone",
+    chipTaskbar: "Discret dans la barre des tâches",
     heroEyebrow: "Telecommande locale Windows",
-    heroTitle: "RemoteDock",
+    heroTitle: "BouRemoteServ",
     heroText: "Controle la souris et les commandes media depuis votre telephone, sans rien installer.",
+    heroStatOneLabel: "Mode",
+    heroStatOneValue: "Local only",
+    heroStatTwoLabel: "Téléphone",
+    heroStatTwoValue: "Seulement le navigateur",
+    heroStatThreeLabel: "Focus",
+    heroStatThreeValue: "Discret dans la barre des tâches",
     localAddress: "Adresse locale",
     lastAction: "Derniere action",
     touchpadEyebrow: "Controle souris",
@@ -46,9 +57,20 @@ const text = {
     languageEnglishStatus: "Langue: anglais",
   },
   en: {
+    appbarEyebrow: "Premium local console",
+    brandTitle: "BouRemoteServ",
+    chipLocalOnly: "Local network only",
+    chipNoInstall: "No install on the phone",
+    chipTaskbar: "Discreet in the taskbar",
     heroEyebrow: "Windows local remote",
-    heroTitle: "RemoteDock",
+    heroTitle: "BouRemoteServ",
     heroText: "Control the mouse and media keys from your phone without installing anything on it.",
+    heroStatOneLabel: "Mode",
+    heroStatOneValue: "Local only",
+    heroStatTwoLabel: "Phone",
+    heroStatTwoValue: "Browser only",
+    heroStatThreeLabel: "Focus",
+    heroStatThreeValue: "Taskbar discreet",
     localAddress: "Local address",
     lastAction: "Last action",
     touchpadEyebrow: "Mouse control",
@@ -158,11 +180,13 @@ function showActionCode(code) {
   state.lastActionCode = code;
   lastAction.textContent = actionLabel(code);
   connectionPill.textContent = actionLabel("ready");
+  connectionPill.dataset.state = "ready";
 }
 
 function setConnectionCode(code) {
   state.connectionCode = code;
   connectionPill.textContent = actionLabel(code);
+  connectionPill.dataset.state = code;
 }
 
 async function requestJson(url, payload) {
@@ -286,6 +310,7 @@ async function refreshStatus() {
   state.lastActionCode = data.lastAction || "ready";
   autostartToggle.checked = Boolean(data.autostart);
   languageSelect.value = state.language;
+  connectionPill.dataset.state = state.connectionCode;
   applyLanguage(state.language);
 }
 
@@ -299,6 +324,7 @@ async function init() {
   state.lastActionCode = data.lastAction || "ready";
   autostartToggle.checked = Boolean(data.autostart);
   languageSelect.value = state.language;
+  connectionPill.dataset.state = state.connectionCode;
   applyLanguage(state.language);
 
   trackpad.addEventListener("pointerdown", handlePointerDown);

@@ -3,19 +3,48 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RemoteDock</title>
+    <title>BouRemoteServ</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div class="backdrop"></div>
     <main class="shell">
+      <header class="appbar card">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <div>
+            <p class="eyebrow" data-i18n="appbarEyebrow">Local remote deck</p>
+            <strong class="brand__title" data-i18n="brandTitle">BouRemoteServ</strong>
+          </div>
+        </div>
+        <div class="appbar__chips" aria-label="Project highlights">
+          <span class="chip" data-i18n="chipLocalOnly">Réseau local uniquement</span>
+          <span class="chip" data-i18n="chipNoInstall">Sans installation sur le téléphone</span>
+          <span class="chip" data-i18n="chipTaskbar">Discret dans la barre des tâches</span>
+        </div>
+      </header>
+
       <section class="hero card">
         <div class="hero__copy">
           <p class="eyebrow" data-i18n="heroEyebrow">Windows local remote</p>
-          <h1 data-i18n="heroTitle">RemoteDock</h1>
+          <h1 data-i18n="heroTitle">BouRemoteServ</h1>
           <p class="hero__text" data-i18n="heroText">
             Controle la souris et les commandes media depuis votre telephone, sans rien installer.
           </p>
+          <div class="hero__stats">
+            <div class="stat-card">
+              <span data-i18n="heroStatOneLabel">Mode</span>
+              <strong data-i18n="heroStatOneValue">Local only</strong>
+            </div>
+            <div class="stat-card">
+              <span data-i18n="heroStatTwoLabel">Phone</span>
+              <strong data-i18n="heroStatTwoValue">Browser only</strong>
+            </div>
+            <div class="stat-card">
+              <span data-i18n="heroStatThreeLabel">Focus</span>
+              <strong data-i18n="heroStatThreeValue">Taskbar discreet</strong>
+            </div>
+          </div>
         </div>
         <div class="hero__status">
           <div class="status-pill" id="connectionPill">Ready</div>
@@ -143,4 +172,3 @@
     <script src="/app.js"></script>
   </body>
 </html>
-
