@@ -77,6 +77,16 @@ The build output lands in `dist/`.
 - [Build Windows](docs/BUILD_WINDOWS.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 
+### French docs
+
+- [Tutoriel FR](docs/TUTORIAL.fr.md)
+- [Installation FR](docs/INSTALLATION.fr.md)
+- [Utilisation FR](docs/USAGE.fr.md)
+- [Architecture FR](docs/ARCHITECTURE.fr.md)
+- [Build Windows FR](docs/BUILD_WINDOWS.fr.md)
+- [Depannage FR](docs/TROUBLESHOOTING.fr.md)
+- [Documentation FR index](docs/README.fr.md)
+
 ## Next upgrades
 
 - Add volume controls
