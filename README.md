@@ -4,6 +4,12 @@
 
 BouRemoteServ is a Windows tray app that exposes a local web interface so your phone can control your PC without installing anything on the phone.
 
+## Version
+
+- Current status: `Unreleased`
+- Changelog: [changelog.md](changelog.md)
+- No tagged release exists yet
+
 ## What it does
 
 - Move the mouse from a phone trackpad
