@@ -86,6 +86,18 @@ The build output lands in `dist/`.
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Support the project](DONATE.md)
 
+## Wiki
+
+- [Wiki EN](wiki/README.md)
+- [Wiki FR](wiki/README.fr.md)
+- [Wiki ES](wiki/README.es.md)
+
+## Tuto
+
+- [Tutorial EN](tuto/README.md)
+- [Tutoriel FR](tuto/README.fr.md)
+- [Tutorial ES](tuto/README.es.md)
+
 ## Documentation language
 
 Pick the version you want to read:

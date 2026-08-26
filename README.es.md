@@ -89,6 +89,18 @@ El resultado se guarda en `dist/`.
 
 - [Apoyar el proyecto](DONATE.es.md)
 
+## Wiki
+
+- [Wiki EN](wiki/README.md)
+- [Wiki FR](wiki/README.fr.md)
+- [Wiki ES](wiki/README.es.md)
+
+## Tuto
+
+- [Tutorial EN](tuto/README.md)
+- [Tutoriel FR](tuto/README.fr.md)
+- [Tutorial ES](tuto/README.es.md)
+
 ## Selección de idioma
 
 Elige la versión que quieres leer:

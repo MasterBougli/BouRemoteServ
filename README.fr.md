@@ -86,6 +86,18 @@ Le résultat est placé dans `dist/`.
 - [Depannage](docs/TROUBLESHOOTING.fr.md)
 - [Soutenir le projet](DONATE.fr.md)
 
+## Wiki
+
+- [Wiki EN](wiki/README.md)
+- [Wiki FR](wiki/README.fr.md)
+- [Wiki ES](wiki/README.es.md)
+
+## Tuto
+
+- [Tutorial EN](tuto/README.md)
+- [Tutoriel FR](tuto/README.fr.md)
+- [Tutorial ES](tuto/README.es.md)
+
 ## Choix de langue de la documentation
 
 Choisis la version que tu veux lire :
