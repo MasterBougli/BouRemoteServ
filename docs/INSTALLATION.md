@@ -24,4 +24,3 @@ python main.py
 ## Packaged install
 
 Use the Windows packaging script in `scripts/build_windows.ps1` to create a standalone executable.
-

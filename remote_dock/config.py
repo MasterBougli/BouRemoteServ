@@ -9,7 +9,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 
-APP_NAME = "RemoteDock"
+APP_NAME = "BouRemoteServ"
 DEFAULT_PORT = 8765
 DEFAULT_LANGUAGE = "fr"
 
@@ -23,7 +23,7 @@ class Settings:
 
 def _candidate_config_dirs() -> list[Path]:
     candidates: list[Path] = []
-    custom_dir = os.environ.get("REMOTE_DOCK_DATA_DIR")
+    custom_dir = os.environ.get("BOUREMOTESERV_DATA_DIR")
     if custom_dir:
         candidates.append(Path(custom_dir))
     if platform.system() == "Windows":
@@ -45,7 +45,7 @@ def _config_dir() -> Path:
             return candidate
         except OSError:
             continue
-    raise RuntimeError("RemoteDock could not create a writable settings directory.")
+    raise RuntimeError("BouRemoteServ could not create a writable settings directory.")
 
 
 def config_path() -> Path:

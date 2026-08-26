@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping improve RemoteDock.
+Thanks for helping improve BouRemoteServ.
 
 ## Ground rules
 
@@ -22,4 +22,3 @@ Thanks for helping improve RemoteDock.
 - Use readable Python.
 - Keep UI text bilingual when it affects the user-facing surface.
 - Avoid adding features that require cloud services.
-

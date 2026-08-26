@@ -7,8 +7,8 @@ $ErrorActionPreference = "Stop"
 
 $python = "C:\Users\defar\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
 $venvDir = Join-Path $OutputDir ".build-venv"
-$buildDir = Join-Path $OutputDir "RemoteDock"
-$archivePath = Join-Path $OutputDir "RemoteDock-windows.zip"
+$buildDir = Join-Path $OutputDir "BouRemoteServ"
+$archivePath = Join-Path $OutputDir "BouRemoteServ-windows.zip"
 
 New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
 if (Test-Path $buildDir) {
@@ -28,7 +28,7 @@ $pyinstallerArgs = @(
     "--noconfirm",
     "--clean",
     "--onefile",
-    "--name", "RemoteDock",
+    "--name", "BouRemoteServ",
     "--add-data", "$ProjectRoot\web;web",
     "--distpath", $buildDir,
     "--workpath", (Join-Path $OutputDir "build"),
@@ -46,4 +46,3 @@ Compress-Archive -Path (Join-Path $buildDir "*") -DestinationPath $archivePath
 Write-Host "Build complete:"
 Write-Host $buildDir
 Write-Host $archivePath
-

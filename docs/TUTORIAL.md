@@ -2,7 +2,7 @@
 
 ## 1. Start the app on the PC
 
-Launch `RemoteDock` on Windows. You should see it appear in the system tray.
+Launch `BouRemoteServ` on Windows. You should see it appear in the system tray.
 
 ## 2. Read the local address
 
@@ -34,4 +34,3 @@ Use the language selector to switch between French and English.
 ## 7. Enable autostart if needed
 
 Turn on the Windows startup switch if you want RemoteDock to launch automatically.
-

@@ -1,6 +1,6 @@
 # Security
 
-RemoteDock is designed for a trusted local network.
+BouRemoteServ is designed for a trusted local network.
 
 ## Current model
 
@@ -19,4 +19,3 @@ RemoteDock is designed for a trusted local network.
 - Optional PIN pairing
 - Device authorization
 - Better access logging
-

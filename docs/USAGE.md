@@ -2,7 +2,7 @@
 
 ## Start the app
 
-Launch RemoteDock from Windows. It runs quietly in the tray and starts a local web server.
+Launch BouRemoteServ from Windows. It runs quietly in the tray and starts a local web server.
 
 ## Connect from the phone
 
@@ -25,4 +25,3 @@ Switch between French and English from the settings panel.
 ## Startup
 
 Enable or disable Windows autostart from the same settings panel or from the tray menu.
-

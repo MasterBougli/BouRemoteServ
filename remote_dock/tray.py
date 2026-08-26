@@ -52,5 +52,5 @@ class TrayController:
 def run_tray(server) -> None:
     quit_event = threading.Event()
     controller = TrayController(server=server, quit_event=quit_event)
-    icon = pystray.Icon("RemoteDock", _build_icon_image(), "RemoteDock", controller.build_menu())
+    icon = pystray.Icon("BouRemoteServ", _build_icon_image(), "BouRemoteServ", controller.build_menu())
     icon.run()

@@ -1,6 +1,6 @@
-# RemoteDock
+# BouRemoteServ
 
-RemoteDock is a Windows tray app that exposes a local web interface so your phone can control your PC without installing anything on the phone.
+BouRemoteServ is a Windows tray app that exposes a local web interface so your phone can control your PC without installing anything on the phone.
 
 ## What it does
 

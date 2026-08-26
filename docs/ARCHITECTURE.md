@@ -1,6 +1,6 @@
 # Architecture
 
-RemoteDock is split into two parts:
+BouRemoteServ is split into two parts:
 
 ## Desktop app
 
@@ -22,4 +22,3 @@ RemoteDock is split into two parts:
 - Local network only
 - No pairing code yet
 - No volume or keyboard actions yet
-

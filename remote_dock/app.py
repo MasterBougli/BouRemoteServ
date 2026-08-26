@@ -12,5 +12,5 @@ def run() -> None:
 
     server = RemoteDockServer(settings)
     server.start()
-    print(f"RemoteDock is ready at {server.base_url}")
+    print(f"BouRemoteServ is ready at {server.base_url}")
     run_tray(server)
