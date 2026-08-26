@@ -21,6 +21,7 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 WEB_DIR = ROOT_DIR / "web"
 
 
+# Détecte l'adresse locale à utiliser pour la connexion depuis le téléphone.
 def get_local_ip() -> str:
     probe = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
@@ -32,6 +33,7 @@ def get_local_ip() -> str:
         probe.close()
 
 
+# Répond avec du JSON propre et sans cache.
 def _json_response(handler: BaseHTTPRequestHandler, status: int, payload: dict[str, Any]) -> None:
     data = json.dumps(payload).encode("utf-8")
     handler.send_response(status)
@@ -42,6 +44,7 @@ def _json_response(handler: BaseHTTPRequestHandler, status: int, payload: dict[s
     handler.wfile.write(data)
 
 
+# Répond avec du texte brut ou HTML.
 def _text_response(handler: BaseHTTPRequestHandler, status: int, content: str, content_type: str = "text/plain; charset=utf-8") -> None:
     data = content.encode("utf-8")
     handler.send_response(status)
@@ -52,6 +55,7 @@ def _text_response(handler: BaseHTTPRequestHandler, status: int, content: str, c
     handler.wfile.write(data)
 
 
+# Répond avec des données binaires, comme une image PNG.
 def _binary_response(handler: BaseHTTPRequestHandler, status: int, data: bytes, content_type: str) -> None:
     handler.send_response(status)
     handler.send_header("Content-Type", content_type)
@@ -61,10 +65,12 @@ def _binary_response(handler: BaseHTTPRequestHandler, status: int, data: bytes, 
     handler.wfile.write(data)
 
 
+# Charge un fichier statique depuis le dossier web.
 def _load_static_file(name: str) -> bytes:
     return (WEB_DIR / name).read_bytes()
 
 
+# Génère le QR code PNG de l'URL locale.
 def _generate_qr_png(url: str) -> bytes:
     qr = qrcode.QRCode(border=2, box_size=8)
     qr.add_data(url)
@@ -78,6 +84,7 @@ def _generate_qr_png(url: str) -> bytes:
 class RemoteDockHTTPServer(ThreadingHTTPServer):
     allow_reuse_address = True
 
+    # Stocke l'état partagé entre le serveur et les requêtes HTTP.
     def __init__(self, server_address, RequestHandlerClass, app_state):
         super().__init__(server_address, RequestHandlerClass)
         self.app_state = app_state
@@ -86,6 +93,7 @@ class RemoteDockHTTPServer(ThreadingHTTPServer):
 class RemoteDockHandler(BaseHTTPRequestHandler):
     server_version = "RemoteDock"
 
+    # Sert les fichiers web et les points de terminaison de lecture.
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         path = parsed.path
@@ -121,6 +129,7 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
             return
         _json_response(self, HTTPStatus.NOT_FOUND, {"ok": False, "error": "Not found"})
 
+    # Traite les actions envoyées depuis l'interface web.
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
         path = parsed.path
@@ -175,9 +184,11 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
 
         _json_response(self, HTTPStatus.NOT_FOUND, {"ok": False, "error": "Not found"})
 
+    # Désactive les logs HTTP par défaut pour garder la console propre.
     def log_message(self, format: str, *args) -> None:
         return
 
+    # Lit un corps JSON depuis la requête courante.
     def _read_json(self) -> dict[str, Any]:
         length = int(self.headers.get("Content-Length", "0"))
         if length <= 0:
@@ -187,6 +198,7 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
 
 
 class AppState:
+    # Prépare l'état partagé utilisé par le serveur et l'interface.
     def __init__(self, settings: Settings, port: int, host: str):
         self.settings = settings
         self.port = port
@@ -196,6 +208,7 @@ class AppState:
 
 
 class RemoteDockServer:
+    # Crée le serveur local avec ses paramètres de départ.
     def __init__(self, settings: Settings):
         self.settings = settings
         self.port = settings.port
@@ -204,10 +217,12 @@ class RemoteDockServer:
         self._server: RemoteDockHTTPServer | None = None
         self._thread: threading.Thread | None = None
 
+    # Expose l'URL de base utilisée par le téléphone.
     @property
     def base_url(self) -> str:
         return self.state.base_url
 
+    # Démarre le serveur HTTP en arrière-plan.
     def start(self) -> None:
         bind_host = "0.0.0.0"
         port = self._choose_port(bind_host, self.settings.port)
@@ -221,6 +236,7 @@ class RemoteDockServer:
         self._thread.start()
         save_settings(self.settings)
 
+    # Arrête proprement le serveur HTTP.
     def stop(self) -> None:
         if self._server:
             self._server.shutdown()
@@ -230,6 +246,7 @@ class RemoteDockServer:
             self._thread.join(timeout=2.0)
             self._thread = None
 
+    # Cherche un port libre à partir du port demandé.
     def _choose_port(self, host: str, start_port: int) -> int:
         for port in range(start_port, start_port + 20):
             try:

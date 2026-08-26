@@ -10,6 +10,7 @@ from PIL import Image, ImageDraw
 from remote_dock.config import save_settings, set_windows_autostart
 
 
+# Génère l'icône de la zone de notification.
 def _build_icon_image() -> Image.Image:
     size = 64
     image = Image.new("RGBA", (size, size), (0, 0, 0, 0))
@@ -27,20 +28,24 @@ class TrayController:
     server: object
     quit_event: threading.Event
 
+    # Bascule le démarrage automatique depuis le menu de la zone de notification.
     def toggle_autostart(self, icon: pystray.Icon, item) -> None:
         enabled = not self.server.settings.autostart
         self.server.settings.autostart = enabled
         set_windows_autostart(enabled)
         save_settings(self.server.settings)
 
+    # Ouvre le tableau de bord local dans le navigateur.
     def open_dashboard(self, icon: pystray.Icon, item) -> None:
         webbrowser.open(self.server.base_url)
 
+    # Ferme proprement le serveur puis quitte l'application.
     def quit_app(self, icon: pystray.Icon, item) -> None:
         self.server.stop()
         self.quit_event.set()
         icon.stop()
 
+    # Construit le menu de la zone de notification.
     def build_menu(self) -> pystray.Menu:
         return pystray.Menu(
             pystray.MenuItem("Open dashboard", self.open_dashboard),
@@ -49,6 +54,7 @@ class TrayController:
         )
 
 
+# Lance l'icône de la zone de notification et attend l'arrêt de l'application.
 def run_tray(server) -> None:
     quit_event = threading.Event()
     controller = TrayController(server=server, quit_event=quit_event)

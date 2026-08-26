@@ -5,6 +5,7 @@ from remote_dock.server import RemoteDockServer
 from remote_dock.tray import run_tray
 
 
+# Lance BouRemoteServ avec les réglages enregistrés et la zone de notification.
 def run() -> None:
     settings = load_settings()
     settings.autostart = read_windows_autostart()

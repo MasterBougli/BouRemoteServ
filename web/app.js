@@ -129,6 +129,7 @@ const state = {
   holdTimer: null,
 };
 
+// Raccourci léger pour cibler les éléments de l'interface.
 const $ = (selector) => document.querySelector(selector);
 const trackpad = $("#trackpad");
 const serverUrl = $("#serverUrl");
@@ -139,11 +140,13 @@ const connectionPill = $("#connectionPill");
 const languageSelect = $("#languageSelect");
 const autostartToggle = $("#autostartToggle");
 
+// Retourne le texte courant dans la langue active.
 function t(key) {
   const dict = text[state.language] || text.fr;
   return dict[key] || text.fr[key] || key;
 }
 
+// Traduit un code d'action interne en libellé lisible.
 function actionLabel(code) {
   const actionToKey = {
     ready: "readyStatus",
@@ -163,6 +166,7 @@ function actionLabel(code) {
   return t(actionToKey[code] || code);
 }
 
+// Applique la langue choisie à tous les textes marqués dans le DOM.
 function applyLanguage(language) {
   const dict = text[language] || text.fr;
   document.documentElement.lang = language;
@@ -176,6 +180,7 @@ function applyLanguage(language) {
   lastAction.textContent = actionLabel(state.lastActionCode);
 }
 
+// Affiche la dernière action effectuée dans l'interface.
 function showActionCode(code) {
   state.lastActionCode = code;
   lastAction.textContent = actionLabel(code);
@@ -183,12 +188,14 @@ function showActionCode(code) {
   connectionPill.dataset.state = "ready";
 }
 
+// Met à jour l'état visuel de connexion.
 function setConnectionCode(code) {
   state.connectionCode = code;
   connectionPill.textContent = actionLabel(code);
   connectionPill.dataset.state = code;
 }
 
+// Envoie une requête JSON vers l'API locale.
 async function requestJson(url, payload) {
   const response = await fetch(url, {
     method: "POST",
@@ -200,6 +207,7 @@ async function requestJson(url, payload) {
   return response.json();
 }
 
+// Regroupe les petits déplacements pour éviter de saturer l'API.
 function scheduleMove(dx, dy) {
   state.queuedDx += dx;
   state.queuedDy += dy;
@@ -219,6 +227,7 @@ function scheduleMove(dx, dy) {
   });
 }
 
+// Active ou désactive l'état de glissement du pavé tactile.
 function setTouchState(active) {
   state.pointerDown = active;
   if (!active) {
@@ -226,6 +235,7 @@ function setTouchState(active) {
   }
 }
 
+// Enregistre le point de départ d'un geste sur le trackpad.
 function handlePointerDown(event) {
   event.preventDefault();
   setTouchState(true);
@@ -236,6 +246,7 @@ function handlePointerDown(event) {
   }
 }
 
+// Calcule le déplacement du curseur pendant un glissement.
 function handlePointerMove(event) {
   if (!state.pointerDown || !state.lastPoint) {
     return;
@@ -249,6 +260,7 @@ function handlePointerMove(event) {
   scheduleMove(dx * 1.8, dy * 1.8);
 }
 
+// Déclenche un clic si le geste n'était pas un glissement.
 function handlePointerUp(event) {
   if (trackpad.releasePointerCapture) {
     try {
@@ -264,6 +276,7 @@ function handlePointerUp(event) {
   }
 }
 
+// Envoie un clic visuel et haptique côté téléphone.
 function pulseClick(button = "left") {
   requestJson("/api/mouse/click", { button });
   showActionCode(button === "left" ? "left-click" : "right-click");
@@ -272,6 +285,7 @@ function pulseClick(button = "left") {
   }
 }
 
+// Attache un maintien de pression à un bouton de déplacement.
 function bindHoldMove(button, direction) {
   const step = direction === "up" || direction === "down" ? 12 : 12;
   const vector = {
@@ -299,6 +313,7 @@ function bindHoldMove(button, direction) {
   button.addEventListener("pointerleave", stop);
 }
 
+// Rafraîchit l'état affiché depuis le serveur local.
 async function refreshStatus() {
   const response = await fetch("/api/status", { cache: "no-store" });
   const data = await response.json();
@@ -314,6 +329,7 @@ async function refreshStatus() {
   applyLanguage(state.language);
 }
 
+// Initialise toute l'interface et ses événements.
 async function init() {
   const data = await (await fetch("/api/status", { cache: "no-store" })).json();
   state.url = data.url;

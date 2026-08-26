@@ -38,6 +38,7 @@ def _candidate_config_dirs() -> list[Path]:
     return candidates
 
 
+# Cherche les emplacements possibles pour stocker la configuration locale.
 def _config_dir() -> Path:
     for candidate in _candidate_config_dirs():
         try:
@@ -48,10 +49,12 @@ def _config_dir() -> Path:
     raise RuntimeError("BouRemoteServ could not create a writable settings directory.")
 
 
+# Retourne le fichier de configuration local de l'application.
 def config_path() -> Path:
     return _config_dir() / "settings.json"
 
 
+# Charge les paramètres enregistrés, ou les valeurs par défaut si rien n'existe.
 def load_settings() -> Settings:
     path = config_path()
     if not path.exists():
@@ -67,18 +70,21 @@ def load_settings() -> Settings:
     )
 
 
+# Enregistre les paramètres actuels sur le disque.
 def save_settings(settings: Settings) -> None:
     path = config_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(asdict(settings), indent=2), encoding="utf-8")
 
 
+# Construit la commande de lancement utilisée pour le démarrage automatique.
 def launcher_command(script_path: Path | None = None) -> str:
     script = script_path or Path(__file__).resolve().parents[1] / "main.py"
     python = Path(sys.executable)
     return f'"{python}" "{script}"'
 
 
+# Active ou désactive le lancement automatique de BouRemoteServ sur Windows.
 def set_windows_autostart(enabled: bool, script_path: Path | None = None) -> None:
     if platform.system() != "Windows":
         return
@@ -96,6 +102,7 @@ def set_windows_autostart(enabled: bool, script_path: Path | None = None) -> Non
                 pass
 
 
+# Vérifie si le lancement automatique est actuellement activé sous Windows.
 def read_windows_autostart() -> bool:
     if platform.system() != "Windows":
         return False
