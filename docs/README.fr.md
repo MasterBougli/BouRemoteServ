@@ -12,3 +12,4 @@
 - [Architecture](./ARCHITECTURE.fr.md)
 - [Build Windows](./BUILD_WINDOWS.fr.md)
 - [Depannage](./TROUBLESHOOTING.fr.md)
+- [Soutenir le projet](../DONATE.fr.md)

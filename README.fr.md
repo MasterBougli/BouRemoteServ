@@ -76,6 +76,7 @@ Le résultat est placé dans `dist/`.
 - [Architecture](docs/ARCHITECTURE.fr.md)
 - [Build Windows](docs/BUILD_WINDOWS.fr.md)
 - [Depannage](docs/TROUBLESHOOTING.fr.md)
+- [Soutenir le projet](DONATE.fr.md)
 
 ## Choix de langue de la documentation
 

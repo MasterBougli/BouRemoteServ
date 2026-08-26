@@ -76,6 +76,7 @@ The build output lands in `dist/`.
 - [Architecture](docs/ARCHITECTURE.md)
 - [Build Windows](docs/BUILD_WINDOWS.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
+- [Support the project](DONATE.md)
 
 ## Documentation language
 

@@ -12,6 +12,7 @@
 - [Architecture](./ARCHITECTURE.md)
 - [Build Windows](./BUILD_WINDOWS.md)
 - [Troubleshooting](./TROUBLESHOOTING.md)
+- [Support the project](../DONATE.md)
 
 ## French
 
