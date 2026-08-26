@@ -23,6 +23,7 @@ def _build_icon_image() -> Image.Image:
     return image
 
 
+# Contrôle de la zone de notification et des actions associées.
 @dataclass
 class TrayController:
     server: object
@@ -47,6 +48,7 @@ class TrayController:
 
     # Construit le menu de la zone de notification.
     def build_menu(self) -> pystray.Menu:
+        # L'ordre du menu suit le parcours attendu: ouvrir, régler, quitter.
         return pystray.Menu(
             pystray.MenuItem("Open dashboard", self.open_dashboard),
             pystray.MenuItem("Autostart with Windows", self.toggle_autostart, checked=lambda item: self.server.settings.autostart),

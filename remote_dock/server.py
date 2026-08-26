@@ -81,6 +81,7 @@ def _generate_qr_png(url: str) -> bytes:
     return buffer.getvalue()
 
 
+# Serveur HTTP local enrichi avec l'état partagé de l'application.
 class RemoteDockHTTPServer(ThreadingHTTPServer):
     allow_reuse_address = True
 
@@ -90,6 +91,7 @@ class RemoteDockHTTPServer(ThreadingHTTPServer):
         self.app_state = app_state
 
 
+# Gestionnaire des requêtes HTTP pour l'interface et l'API locale.
 class RemoteDockHandler(BaseHTTPRequestHandler):
     server_version = "RemoteDock"
 
@@ -99,6 +101,7 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
         path = parsed.path
         state = self.server.app_state
 
+        # Pages statiques de l'interface web.
         if path in {"/", "/index.html"}:
             _binary_response(self, HTTPStatus.OK, _load_static_file("index.html"), "text/html; charset=utf-8")
             return
@@ -108,6 +111,8 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
         if path == "/app.js":
             _binary_response(self, HTTPStatus.OK, _load_static_file("app.js"), "application/javascript; charset=utf-8")
             return
+
+        # Points de lecture utilisés par le tableau de bord.
         if path == "/api/status":
             _json_response(
                 self,
@@ -137,17 +142,20 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
         payload = self._read_json()
 
         try:
+            # Mouvement de souris envoyé par le pavé tactile.
             if path == "/api/mouse/move":
                 move_mouse(int(payload.get("dx", 0)), int(payload.get("dy", 0)))
                 state.last_action = "mouse"
                 _json_response(self, HTTPStatus.OK, {"ok": True})
                 return
+            # Clics souris.
             if path == "/api/mouse/click":
                 button = str(payload.get("button", "left"))
                 mouse_click(button)
                 state.last_action = f"{button}-click"
                 _json_response(self, HTTPStatus.OK, {"ok": True})
                 return
+            # Raccourcis multimédia.
             if path == "/api/media/playpause":
                 play_pause()
                 state.last_action = "playpause"
@@ -163,6 +171,7 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
                 state.last_action = "previous"
                 _json_response(self, HTTPStatus.OK, {"ok": True})
                 return
+            # Réglages de l'application.
             if path == "/api/settings/autostart":
                 enabled = bool(payload.get("enabled", False))
                 state.settings.autostart = enabled
@@ -197,6 +206,7 @@ class RemoteDockHandler(BaseHTTPRequestHandler):
         return json.loads(raw)
 
 
+# Conteneur simple pour l'état partagé entre le serveur et l'interface.
 class AppState:
     # Prépare l'état partagé utilisé par le serveur et l'interface.
     def __init__(self, settings: Settings, port: int, host: str):
@@ -207,6 +217,7 @@ class AppState:
         self.last_action = "ready"
 
 
+# Orchestration du serveur, du port et de l'adresse locale.
 class RemoteDockServer:
     # Crée le serveur local avec ses paramètres de départ.
     def __init__(self, settings: Settings):
@@ -224,6 +235,7 @@ class RemoteDockServer:
 
     # Démarre le serveur HTTP en arrière-plan.
     def start(self) -> None:
+        # Le serveur écoute sur toutes les interfaces, mais on publie une URL locale.
         bind_host = "0.0.0.0"
         port = self._choose_port(bind_host, self.settings.port)
         self.port = port
@@ -248,6 +260,7 @@ class RemoteDockServer:
 
     # Cherche un port libre à partir du port demandé.
     def _choose_port(self, host: str, start_port: int) -> int:
+        # On tente une petite plage pour éviter les conflits de ports courants.
         for port in range(start_port, start_port + 20):
             try:
                 test = ThreadingHTTPServer((host, port), RemoteDockHandler)

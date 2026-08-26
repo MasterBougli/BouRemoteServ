@@ -343,15 +343,18 @@ async function init() {
   connectionPill.dataset.state = state.connectionCode;
   applyLanguage(state.language);
 
+  // Branche les interactions principales du pavé tactile et des boutons.
   trackpad.addEventListener("pointerdown", handlePointerDown);
   trackpad.addEventListener("pointermove", handlePointerMove);
   trackpad.addEventListener("pointerup", handlePointerUp);
   trackpad.addEventListener("pointercancel", handlePointerUp);
 
+  // Les boutons directionnels répètent leur action tant qu'ils sont maintenus.
   document.querySelectorAll("[data-move]").forEach((button) => {
     bindHoldMove(button, button.dataset.move);
   });
 
+  // Clic gauche et clic droit restent accessibles en tap direct.
   document.querySelectorAll("[data-action='left-click']").forEach((button) => {
     button.addEventListener("click", () => pulseClick("left"));
   });
@@ -360,6 +363,7 @@ async function init() {
     button.addEventListener("click", () => pulseClick("right"));
   });
 
+  // Les boutons média envoient une action simple au serveur local.
   document.querySelectorAll("[data-media]").forEach((button) => {
     button.addEventListener("click", async () => {
       const action = button.dataset.media;
@@ -368,6 +372,7 @@ async function init() {
     });
   });
 
+  // Le bouton de copie donne un accès rapide à l'adresse locale.
   $("#copyButton").addEventListener("click", async () => {
     try {
       if (navigator.clipboard && window.isSecureContext) {
@@ -392,6 +397,7 @@ async function init() {
     showActionCode(language);
   });
 
+  // Le switch d'autostart synchronise l'interface avec les réglages Windows.
   autostartToggle.addEventListener("change", async () => {
     const enabled = autostartToggle.checked;
     await requestJson("/api/settings/autostart", { enabled });
