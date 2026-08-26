@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RemoteDock</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+    <main class="shell">
+      <section class="hero card">
+        <div class="hero__copy">
+          <p class="eyebrow" data-i18n="heroEyebrow">Windows local remote</p>
+          <h1 data-i18n="heroTitle">RemoteDock</h1>
+          <p class="hero__text" data-i18n="heroText">
+            Controle la souris et les commandes media depuis votre telephone, sans rien installer.
+          </p>
+        </div>
+        <div class="hero__status">
+          <div class="status-pill" id="connectionPill">Ready</div>
+          <div class="status-stack">
+            <div class="status-item">
+              <span data-i18n="localAddress">Adresse locale</span>
+              <strong id="serverUrl">-</strong>
+            </div>
+            <div class="status-item">
+              <span data-i18n="lastAction">Derniere action</span>
+              <strong id="lastAction">-</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout">
+        <section class="left column">
+          <article class="card panel">
+            <div class="panel__header">
+              <div>
+                <p class="eyebrow" data-i18n="touchpadEyebrow">Mouse control</p>
+                <h2 data-i18n="touchpadTitle">Trackpad</h2>
+              </div>
+              <p class="panel__hint" data-i18n="touchpadHint">Glissez pour bouger le curseur. Tap = clic gauche.</p>
+            </div>
+            <div class="trackpad" id="trackpad" aria-label="Trackpad">
+              <div class="trackpad__glow"></div>
+              <div class="trackpad__label" data-i18n="trackpadLabel">Swipe here</div>
+            </div>
+            <div class="click-row">
+              <button class="ghost-button" data-action="left-click" data-i18n="leftClick">Left click</button>
+              <button class="ghost-button" data-action="right-click" data-i18n="rightClick">Right click</button>
+            </div>
+          </article>
+
+          <article class="card panel">
+            <div class="panel__header">
+              <div>
+                <p class="eyebrow" data-i18n="directionEyebrow">Precision control</p>
+                <h2 data-i18n="directionTitle">Directional pad</h2>
+              </div>
+              <p class="panel__hint" data-i18n="directionHint">Parfait pour les petits ajustements.</p>
+            </div>
+            <div class="dpad" aria-label="Direction pad">
+              <button class="dpad__btn" data-move="up" aria-label="Move up">▲</button>
+              <div class="dpad__row">
+                <button class="dpad__btn" data-move="left" aria-label="Move left">◀</button>
+                <button class="dpad__btn dpad__btn--center" data-action="left-click" aria-label="Left click">●</button>
+                <button class="dpad__btn" data-move="right" aria-label="Move right">▶</button>
+              </div>
+              <button class="dpad__btn" data-move="down" aria-label="Move down">▼</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="right column">
+          <article class="card panel">
+            <div class="panel__header">
+              <div>
+                <p class="eyebrow" data-i18n="mediaEyebrow">Media controls</p>
+                <h2 data-i18n="mediaTitle">Playback</h2>
+              </div>
+              <p class="panel__hint" data-i18n="mediaHint">Play, pause, next, previous.</p>
+            </div>
+            <div class="media-grid">
+              <button class="media-button" data-media="previous" data-i18n="previous">Previous</button>
+              <button class="media-button media-button--primary" data-media="playpause" data-i18n="playPause">Play / Pause</button>
+              <button class="media-button" data-media="next" data-i18n="next">Next</button>
+            </div>
+          </article>
+
+          <article class="card panel">
+            <div class="panel__header">
+              <div>
+                <p class="eyebrow" data-i18n="connectEyebrow">Access</p>
+                <h2 data-i18n="connectTitle">Connect</h2>
+              </div>
+              <p class="panel__hint" data-i18n="connectHint">Use the QR code or type the address manually.</p>
+            </div>
+            <div class="connect-grid">
+              <div class="qr-card">
+                <img id="qrCode" alt="QR code" />
+              </div>
+              <div class="connect-copy">
+                <label for="serverUrlInput" data-i18n="manualAddress">Manual address</label>
+                <div class="copy-row">
+                  <input id="serverUrlInput" type="text" readonly />
+                  <button id="copyButton" class="mini-button" data-i18n="copy">Copy</button>
+                </div>
+                <p class="note" data-i18n="networkNote">Restez sur le meme Wi-Fi local.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card panel">
+            <div class="panel__header">
+              <div>
+                <p class="eyebrow" data-i18n="settingsEyebrow">Settings</p>
+                <h2 data-i18n="settingsTitle">System</h2>
+              </div>
+              <p class="panel__hint" data-i18n="settingsHint">Language and startup behavior.</p>
+            </div>
+            <div class="settings-grid">
+              <label class="setting-field">
+                <span data-i18n="languageLabel">Language</span>
+                <select id="languageSelect">
+                  <option value="fr">FR</option>
+                  <option value="en">EN</option>
+                </select>
+              </label>
+              <label class="switch">
+                <input id="autostartToggle" type="checkbox" />
+                <span class="switch__track">
+                  <span class="switch__thumb"></span>
+                </span>
+                <span class="switch__text" data-i18n="autostartLabel">Start with Windows</span>
+              </label>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
+
