@@ -2,6 +2,12 @@
 
 **Language:** [English](../README.md) | [Français](../README.fr.md) | [Español](../README.es.md)
 
+## Version
+
+- Current status: `Unreleased`
+- Changelog: [changelog.md](../changelog.md)
+- No tagged release exists yet
+
 ## Language
 
 | Language | Open |

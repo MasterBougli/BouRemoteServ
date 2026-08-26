@@ -2,6 +2,12 @@
 
 **Idioma:** [English](../README.md) | [Français](../README.fr.md) | [Español](../README.es.md)
 
+## Versión
+
+- Estado actual: `No publicado`
+- Changelog: [changelog.md](../changelog.md)
+- Todavía no existe ninguna release etiquetada
+
 ## Idioma
 
 | Idioma | Abrir |
