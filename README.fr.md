@@ -77,6 +77,15 @@ Le résultat est placé dans `dist/`.
 - [Build Windows](docs/BUILD_WINDOWS.fr.md)
 - [Depannage](docs/TROUBLESHOOTING.fr.md)
 
+## Choix de langue de la documentation
+
+Choisis la version que tu veux lire :
+
+| Langue | Ouvrir |
+| --- | --- |
+| English | [Ouvrir les docs EN](docs/README.md) |
+| Francais | [Ouvrir les docs FR](docs/README.fr.md) |
+
 ## Suite possible
 
 - Ajouter le volume
@@ -85,3 +94,8 @@ Le résultat est placé dans `dist/`.
 - Ajouter la sélection de plusieurs PC
 - Préparer un installateur Windows signé
 
+## Licence et contributions
+
+- Projet sous licence AGPLv3 ou ultérieure
+- Les contributions nécessitent un sign-off DCO
+- Voir [LICENSE](LICENSE) et [DCO.fr.md](DCO.fr.md)

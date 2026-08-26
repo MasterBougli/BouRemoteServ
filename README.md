@@ -77,6 +77,15 @@ The build output lands in `dist/`.
 - [Build Windows](docs/BUILD_WINDOWS.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 
+## Documentation language
+
+Pick the version you want to read:
+
+| Language | Open |
+| --- | --- |
+| English | [Open EN docs](docs/README.md) |
+| Français | [Ouvrir les docs FR](docs/README.fr.md) |
+
 ### French docs
 
 - [Tutoriel FR](docs/TUTORIAL.fr.md)
@@ -86,6 +95,12 @@ The build output lands in `dist/`.
 - [Build Windows FR](docs/BUILD_WINDOWS.fr.md)
 - [Depannage FR](docs/TROUBLESHOOTING.fr.md)
 - [Documentation FR index](docs/README.fr.md)
+
+## License and contributions
+
+- Licensed under AGPLv3 or later
+- Contributions require DCO sign-off
+- See [LICENSE](LICENSE) and [DCO.md](DCO.md)
 
 ## Next upgrades
 

@@ -22,3 +22,11 @@ Thanks for helping improve BouRemoteServ.
 - Use readable Python.
 - Keep UI text bilingual when it affects the user-facing surface.
 - Avoid adding features that require cloud services.
+
+## DCO
+
+All contributions must include a DCO sign-off line in the commit message or pull request:
+
+```text
+Signed-off-by: Your Name <your.email@example.com>
+```

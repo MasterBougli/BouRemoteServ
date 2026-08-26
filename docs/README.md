@@ -1,5 +1,12 @@
 # Documentation Index
 
+## Language
+
+| Language | Open |
+| --- | --- |
+| English | [This index](./README.md) |
+| Français | [French index](./README.fr.md) |
+
 - [Installation](./INSTALLATION.md)
 - [Usage](./USAGE.md)
 - [Architecture](./ARCHITECTURE.md)

@@ -23,3 +23,10 @@ Merci d'aider à améliorer BouRemoteServ.
 - Garde les textes utilisateurs bilingues quand c'est utile.
 - N'ajoute pas de dépendance cloud.
 
+## DCO
+
+Toutes les contributions doivent inclure une ligne de sign-off DCO dans le commit ou la pull request :
+
+```text
+Signed-off-by: Your Name <your.email@example.com>
+```

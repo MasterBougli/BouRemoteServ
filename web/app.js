@@ -31,6 +31,19 @@ const text = {
     settingsHint: "Langue et demarrage automatique.",
     languageLabel: "Langue",
     autostartLabel: "Demarrer avec Windows",
+    readyStatus: "Pret",
+    offlineStatus: "Hors ligne",
+    copiedStatus: "Copie",
+    mouseStatus: "Mouvement souris",
+    leftClickStatus: "Clic gauche",
+    rightClickStatus: "Clic droit",
+    playPauseStatus: "Lecture basculee",
+    nextStatus: "Piste suivante",
+    previousStatus: "Piste precedente",
+    autostartOnStatus: "Demarrage automatique active",
+    autostartOffStatus: "Demarrage automatique desactive",
+    languageFrenchStatus: "Langue: francais",
+    languageEnglishStatus: "Langue: anglais",
   },
   en: {
     heroEyebrow: "Windows local remote",
@@ -64,12 +77,27 @@ const text = {
     settingsHint: "Language and startup behavior.",
     languageLabel: "Language",
     autostartLabel: "Start with Windows",
+    readyStatus: "Ready",
+    offlineStatus: "Offline",
+    copiedStatus: "Copied",
+    mouseStatus: "Mouse move",
+    leftClickStatus: "Left click",
+    rightClickStatus: "Right click",
+    playPauseStatus: "Playback toggled",
+    nextStatus: "Next track",
+    previousStatus: "Previous track",
+    autostartOnStatus: "Autostart enabled",
+    autostartOffStatus: "Autostart disabled",
+    languageFrenchStatus: "Language: French",
+    languageEnglishStatus: "Language: English",
   },
 };
 
 const state = {
   url: "",
   language: "fr",
+  connectionCode: "ready",
+  lastActionCode: "ready",
   pointerDown: false,
   lastPoint: null,
   dragged: false,
@@ -89,6 +117,30 @@ const connectionPill = $("#connectionPill");
 const languageSelect = $("#languageSelect");
 const autostartToggle = $("#autostartToggle");
 
+function t(key) {
+  const dict = text[state.language] || text.fr;
+  return dict[key] || text.fr[key] || key;
+}
+
+function actionLabel(code) {
+  const actionToKey = {
+    ready: "readyStatus",
+    offline: "offlineStatus",
+    mouse: "mouseStatus",
+    copied: "copiedStatus",
+    "left-click": "leftClickStatus",
+    "right-click": "rightClickStatus",
+    playpause: "playPauseStatus",
+    next: "nextStatus",
+    previous: "previousStatus",
+    "autostart-on": "autostartOnStatus",
+    "autostart-off": "autostartOffStatus",
+    fr: "languageFrenchStatus",
+    en: "languageEnglishStatus",
+  };
+  return t(actionToKey[code] || code);
+}
+
 function applyLanguage(language) {
   const dict = text[language] || text.fr;
   document.documentElement.lang = language;
@@ -98,11 +150,19 @@ function applyLanguage(language) {
       node.textContent = dict[key];
     }
   });
+  connectionPill.textContent = actionLabel(state.connectionCode);
+  lastAction.textContent = actionLabel(state.lastActionCode);
 }
 
-function showAction(label) {
-  lastAction.textContent = label;
-  connectionPill.textContent = "Ready";
+function showActionCode(code) {
+  state.lastActionCode = code;
+  lastAction.textContent = actionLabel(code);
+  connectionPill.textContent = actionLabel("ready");
+}
+
+function setConnectionCode(code) {
+  state.connectionCode = code;
+  connectionPill.textContent = actionLabel(code);
 }
 
 async function requestJson(url, payload) {
@@ -131,7 +191,7 @@ function scheduleMove(dx, dy) {
       return;
     }
     await requestJson("/api/mouse/move", payload);
-    showAction(`Mouse ${payload.dx}, ${payload.dy}`);
+    showActionCode("mouse");
   });
 }
 
@@ -182,7 +242,7 @@ function handlePointerUp(event) {
 
 function pulseClick(button = "left") {
   requestJson("/api/mouse/click", { button });
-  showAction(button === "left" ? "Left click" : "Right click");
+  showActionCode(button === "left" ? "left-click" : "right-click");
   if (navigator.vibrate) {
     navigator.vibrate(10);
   }
@@ -223,7 +283,7 @@ async function refreshStatus() {
   serverUrl.textContent = data.url;
   serverUrlInput.value = data.url;
   qrCode.src = "/api/qr.png";
-  lastAction.textContent = data.lastAction || "ready";
+  state.lastActionCode = data.lastAction || "ready";
   autostartToggle.checked = Boolean(data.autostart);
   languageSelect.value = state.language;
   applyLanguage(state.language);
@@ -236,7 +296,7 @@ async function init() {
   serverUrl.textContent = data.url;
   serverUrlInput.value = data.url;
   qrCode.src = "/api/qr.png";
-  lastAction.textContent = data.lastAction || "ready";
+  state.lastActionCode = data.lastAction || "ready";
   autostartToggle.checked = Boolean(data.autostart);
   languageSelect.value = state.language;
   applyLanguage(state.language);
@@ -262,7 +322,7 @@ async function init() {
     button.addEventListener("click", async () => {
       const action = button.dataset.media;
       await requestJson(`/api/media/${action}`, {});
-      showAction(action);
+      showActionCode(action);
     });
   });
 
@@ -280,27 +340,27 @@ async function init() {
       serverUrlInput.select();
       document.execCommand("copy");
     }
-    showAction("Copied");
+    showActionCode("copied");
   });
 
   languageSelect.addEventListener("change", async () => {
     const language = languageSelect.value;
     await requestJson("/api/settings/language", { language });
     applyLanguage(language);
-    showAction(language.toUpperCase());
+    showActionCode(language);
   });
 
   autostartToggle.addEventListener("change", async () => {
     const enabled = autostartToggle.checked;
     await requestJson("/api/settings/autostart", { enabled });
-    showAction(enabled ? "Autostart on" : "Autostart off");
+    showActionCode(enabled ? "autostart-on" : "autostart-off");
   });
 
   window.setInterval(refreshStatus, 5000);
 }
 
 init().catch((error) => {
-  connectionPill.textContent = "Offline";
+  setConnectionCode("offline");
   connectionPill.style.background = "rgba(255, 106, 136, 0.14)";
   connectionPill.style.borderColor = "rgba(255, 106, 136, 0.3)";
   console.error(error);
