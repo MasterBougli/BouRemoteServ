@@ -25,6 +25,15 @@ RemoteDock is a Windows tray app that exposes a local web interface so your phon
 - `main.py` launches the tray app and local server
 - `remote_dock/` contains the Windows control logic
 - `web/` contains the responsive mobile-first interface
+- `docs/` contains the installation and usage guide
+- `scripts/` contains Windows build helpers
+
+## Quick start
+
+1. Install the dependencies.
+2. Run `python main.py`.
+3. Open the shown local address on your phone.
+4. Use the QR code or the manual address to connect.
 
 ## Run locally
 
@@ -43,11 +52,30 @@ python main.py
 
 4. Open the URL shown in the tray menu or scan the QR code from the dashboard.
 
+## Windows build
+
+Use the packaging helper:
+
+```powershell
+.\scripts\build_windows.ps1
+```
+
+The build output lands in `dist/`.
+
 ## Notes
 
 - The app listens on your local network, so your phone and PC must be on the same Wi-Fi.
 - The current version is intentionally minimal: mouse movement plus media controls only.
 - The interface is designed to feel premium and dark by default.
+
+## Documentation
+
+- [Tutorial](docs/TUTORIAL.md)
+- [Installation](docs/INSTALLATION.md)
+- [Usage](docs/USAGE.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Build Windows](docs/BUILD_WINDOWS.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
 
 ## Next upgrades
 
@@ -56,4 +84,3 @@ python main.py
 - Add keyboard shortcuts
 - Add multi-PC selection
 - Package as a signed Windows installer
-
