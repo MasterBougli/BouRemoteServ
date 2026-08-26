@@ -4,6 +4,12 @@
 
 BouRemoteServ est une application Windows discrète dans la zone de notification qui expose une interface web locale pour contrôler ton PC depuis le téléphone, sans rien installer sur le téléphone.
 
+## Version
+
+- Statut actuel : `Non publié`
+- Journal des versions : [changelog.md](changelog.md)
+- Aucun tag de release n'existe encore
+
 ## Ce que fait le projet
 
 - Déplacer la souris avec un pavé tactile depuis le téléphone
